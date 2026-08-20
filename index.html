@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3김 프로젝트 : KEDI 참여 행동</title>
+<meta name="description" content="제20회 KEDI 데이터 연구 학술대회 연구과제 — 중·고등학교 시기 참여의식의 발달 궤적과 성인 초기 정치참여">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --ink:#15181c; --muted:#59616a;
+  --line:#dde2e7; --accent:#14614a; --accent-soft:#e8f1ec; --band:#eef1f4;
+  --shadow:0 1px 2px rgba(15,23,32,.06), 0 4px 14px rgba(15,23,32,.05);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#131619; --surface:#1a1e22; --ink:#e5e9ed; --muted:#98a1aa;
+  --line:#2b3138; --accent:#5cc79c; --accent-soft:#152a23; --band:#20252a;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 4px 14px rgba(0,0,0,.3);
+}}
+:root[data-theme="dark"]{
+  --bg:#131619; --surface:#1a1e22; --ink:#e5e9ed; --muted:#98a1aa;
+  --line:#2b3138; --accent:#5cc79c; --accent-soft:#152a23; --band:#20252a;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 4px 14px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans KR","Malgun Gothic",system-ui,-apple-system,sans-serif;
+  display:flex; flex-direction:column; word-break:keep-all;
+}
+header{
+  background:var(--surface); border-bottom:1px solid var(--line);
+  padding:0 clamp(14px,3vw,32px); flex:0 0 auto;
+}
+.brand{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; padding:16px 0 12px}
+.brand h1{
+  margin:0; font-size:clamp(1.02rem,2.4vw,1.32rem); font-weight:700;
+  letter-spacing:-.01em; line-height:1.35;
+}
+.brand h1 .sep{color:var(--accent); margin:0 .35em; font-weight:500}
+.brand .sub{font-size:.8rem; color:var(--muted); font-weight:400}
+nav.primary{display:flex; gap:4px; border-bottom:none}
+nav.primary button{
+  appearance:none; background:none; border:0; cursor:pointer;
+  font:inherit; font-weight:600; font-size:.95rem; color:var(--muted);
+  padding:10px 18px; border-bottom:2.5px solid transparent; transition:.15s;
+}
+nav.primary button:hover{color:var(--ink)}
+nav.primary button[aria-selected="true"]{color:var(--accent); border-bottom-color:var(--accent)}
+nav.secondary{
+  display:flex; gap:6px; flex-wrap:wrap; padding:12px 0 14px;
+  border-top:1px solid var(--line);
+}
+nav.secondary button{
+  appearance:none; cursor:pointer; font:inherit; font-size:.86rem; font-weight:500;
+  color:var(--muted); background:var(--band); border:1px solid transparent;
+  padding:7px 15px; border-radius:999px; transition:.15s; white-space:nowrap;
+}
+nav.secondary button:hover{color:var(--ink)}
+nav.secondary button[aria-selected="true"]{
+  background:var(--accent-soft); color:var(--accent);
+  border-color:var(--accent); font-weight:600;
+}
+main{flex:1 1 auto; display:flex; flex-direction:column; min-height:0;
+  padding:clamp(10px,2vw,20px) clamp(14px,3vw,32px) clamp(14px,3vw,24px)}
+.panel{flex:1 1 auto; display:none; flex-direction:column; min-height:0}
+.panel.active{display:flex}
+.meta{
+  display:flex; align-items:center; justify-content:space-between; gap:14px;
+  flex-wrap:wrap; margin:0 0 10px;
+}
+.meta .title{font-size:.92rem; font-weight:600}
+.meta .title small{display:block; font-weight:400; color:var(--muted); font-size:.8rem; margin-top:2px}
+.meta .links{display:flex; gap:8px}
+.meta a{
+  font-size:.8rem; text-decoration:none; color:var(--accent);
+  border:1px solid var(--line); background:var(--surface);
+  padding:6px 12px; border-radius:6px; transition:.15s; white-space:nowrap;
+}
+.meta a:hover{border-color:var(--accent); background:var(--accent-soft)}
+.frame{
+  flex:1 1 auto; min-height:420px; border:1px solid var(--line); border-radius:10px;
+  overflow:hidden; background:var(--surface); box-shadow:var(--shadow);
+}
+.frame iframe{width:100%; height:100%; border:0; display:block; background:var(--surface)}
+footer{
+  flex:0 0 auto; padding:12px clamp(14px,3vw,32px) 20px;
+  font-size:.76rem; color:var(--muted); line-height:1.7;
+}
+footer b{color:var(--ink); font-weight:600}
+@media (max-width:600px){
+  .frame{min-height:60vh}
+  nav.primary button{padding:9px 13px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1>3김 프로젝트<span class="sep">:</span>KEDI 참여 행동</h1>
+    <span class="sub">제20회 KEDI 데이터 연구 학술대회 · 회의 및 검토용</span>
+  </div>
+  <nav class="primary" role="tablist" aria-label="주 메뉴">
+    <button role="tab" data-section="overview" aria-selected="true">개요</button>
+    <button role="tab" data-section="analysis" aria-selected="false">분석</button>
+  </nav>
+  <nav class="secondary" id="subnav" role="tablist" aria-label="하위 탭"></nav>
+</header>
+
+<main id="main"></main>
+
+<footer>
+  <b>김동진</b>(제1저자) · <b>김재우</b> · <b>김명정</b> &nbsp;|&nbsp;
+  자료: 한국교육종단연구2013(KELS2013) 3~12차 &nbsp;|&nbsp;
+  분석: R 4.6.1 lavaan · WLSMV · 표집학교 군집 강건 SE
+</footer>
+
+<script>
+const SECTIONS = {
+  overview: {
+    label: "개요",
+    tabs: [
+      { id:"plan",   label:"계획", title:"연구계획서",
+        sub:"중·고등학교 시기 참여의식이 성인기 정치적 참여 행동에 미치는 영향 (심사 통과본)",
+        src:"docs/plan.pdf", type:"pdf" },
+      { id:"notice", label:"안내", title:"공모 결과 안내",
+        sub:"제20회 KEDI 데이터 연구 학술대회 공모 결과",
+        src:"docs/notice.pdf", type:"pdf" }
+    ]
+  },
+  analysis: {
+    label: "분석",
+    tabs: [
+      { id:"1", label:"분석1", title:"분석1 — 참여의식 궤적과 성인 초기 정치참여",
+        sub:"중1~고3 6시점 · 선형 성장 6요인 · N=5,294",
+        src:"reports/analysis1.html", type:"html" },
+      { id:"2", label:"분석2", title:"분석2 — 공통 이수기 참여의식과 성인 초기 정치참여",
+        sub:"중1~고1 4시점 · 선형 성장 6요인 · N=5,634",
+        src:"reports/analysis2.html", type:"html" },
+      { id:"3", label:"분석3", title:"분석3 — 고1 분절 이중 기울기 모형",
+        sub:"중1~고3 6시점 · 절편·전반·후반 9요인 · N=5,294",
+        src:"reports/analysis3.html", type:"html" },
+      { id:"4", label:"분석4", title:"분석4 — 문·이과 계열에 따른 궤적과 정치참여",
+        sub:"분석3 + 계열 다집단 · 문과 2,375 / 이과 2,220",
+        src:"reports/analysis4.html", type:"html" },
+      { id:"5", label:"분석5", title:"분석5 — 성인 초기 정치참여 유형과 참여의식 성장",
+        sub:"참여 4범주 유형화 · 비참여 기준 대비 · N=4,498",
+        src:"reports/analysis5.html", type:"html" }
+    ]
+  }
+};
+
+const subnav = document.getElementById("subnav");
+const main = document.getElementById("main");
+const primaryBtns = [...document.querySelectorAll("nav.primary button")];
+const built = new Set();
+
+function panelId(sec, tab){ return "p-" + sec + "-" + tab; }
+
+function ensurePanel(sec, tab){
+  const key = panelId(sec, tab.id);
+  if (built.has(key)) return document.getElementById(key);
+  built.add(key);
+  const el = document.createElement("section");
+  el.className = "panel"; el.id = key; el.setAttribute("role","tabpanel");
+  const openLabel = tab.type === "pdf" ? "새 탭에서 열기" : "새 탭에서 열기";
+  el.innerHTML =
+    '<div class="meta">' +
+      '<div class="title">' + tab.title + '<small>' + tab.sub + '</small></div>' +
+      '<div class="links">' +
+        '<a href="' + tab.src + '" target="_blank" rel="noopener">' + openLabel + '</a>' +
+        (tab.type === "pdf"
+          ? '<a href="' + tab.src + '" download>내려받기</a>' : '') +
+      '</div>' +
+    '</div>' +
+    '<div class="frame"><iframe title="' + tab.title + '" loading="lazy" ' +
+      'src="' + tab.src + (tab.type === "pdf" ? "#view=FitH" : "") + '"></iframe></div>';
+  main.appendChild(el);
+  return el;
+}
+
+function render(sec, tabId){
+  const conf = SECTIONS[sec] || SECTIONS.overview;
+  const tab = conf.tabs.find(t => t.id === tabId) || conf.tabs[0];
+
+  primaryBtns.forEach(b =>
+    b.setAttribute("aria-selected", String(b.dataset.section === sec)));
+
+  subnav.innerHTML = "";
+  conf.tabs.forEach(t => {
+    const b = document.createElement("button");
+    b.type = "button"; b.textContent = t.label; b.setAttribute("role","tab");
+    b.setAttribute("aria-selected", String(t.id === tab.id));
+    b.onclick = () => { location.hash = "#/" + sec + "/" + t.id; };
+    subnav.appendChild(b);
+  });
+
+  ensurePanel(sec, tab);
+  document.querySelectorAll(".panel").forEach(p =>
+    p.classList.toggle("active", p.id === panelId(sec, tab.id)));
+  document.title = tab.title + " · 3김 프로젝트 : KEDI 참여 행동";
+}
+
+function route(){
+  const m = /^#\/([a-z]+)\/([\w-]+)$/.exec(location.hash || "");
+  if (m && SECTIONS[m[1]]) render(m[1], m[2]);
+  else render("overview", "plan");
+}
+
+primaryBtns.forEach(b => b.onclick = () => {
+  const sec = b.dataset.section;
+  location.hash = "#/" + sec + "/" + SECTIONS[sec].tabs[0].id;
+});
+
+addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
