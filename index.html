@@ -41,23 +41,32 @@ aside{
 .brand h1 .sep{color:var(--accent); margin:0 .3em; font-weight:500}
 .brand .sub{display:block; margin-top:6px; font-size:.74rem; color:var(--muted); line-height:1.6}
 nav{padding:14px 12px; flex:1 1 auto}
-.group{margin-bottom:18px}
+.group{margin-bottom:22px}
 .group > .glabel{
-  display:block; padding:0 10px 8px; font-size:.72rem; font-weight:700;
-  color:var(--muted); letter-spacing:.06em; text-transform:uppercase;
+  display:flex; align-items:center; gap:9px;
+  padding:8px 12px; margin-bottom:8px; border-radius:7px;
+  background:var(--accent); color:#fff;
+  font-size:.95rem; font-weight:700; letter-spacing:.01em;
 }
+.group > .glabel .dot{
+  width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.85); flex:0 0 auto;
+}
+.group > .glabel .cnt{
+  margin-left:auto; font-size:.72rem; font-weight:500;
+  background:rgba(255,255,255,.2); padding:2px 8px; border-radius:999px;
+}
+nav .items{padding-left:6px; border-left:2px solid var(--line); margin-left:8px}
 nav button{
   display:block; width:100%; text-align:left; appearance:none; cursor:pointer;
-  font:inherit; font-size:.88rem; font-weight:500; color:var(--muted);
-  background:none; border:0; border-radius:7px; padding:9px 12px; margin-bottom:2px;
+  font:inherit; font-size:.84rem; font-weight:500; color:var(--muted);
+  background:none; border:0; border-radius:6px; padding:8px 11px; margin-bottom:1px;
   transition:.13s; line-height:1.4;
 }
 nav button:hover{background:var(--band); color:var(--ink)}
 nav button[aria-selected="true"]{
   background:var(--accent-soft); color:var(--accent); font-weight:600;
-  box-shadow:inset 3px 0 0 var(--accent);
 }
-nav button small{display:block; font-size:.72rem; font-weight:400; opacity:.75; margin-top:2px}
+nav button small{display:block; font-size:.71rem; font-weight:400; opacity:.72; margin-top:2px}
 aside footer{
   padding:14px 20px 18px; border-top:1px solid var(--line);
   font-size:.74rem; color:var(--muted);
@@ -123,10 +132,14 @@ main{display:flex; flex-direction:column; min-width:0; min-height:0; padding:16p
 <script>
 const SECTIONS = [
   { id:"overview", label:"개요", tabs:[
-    { id:"plan", label:"계획", title:"연구계획서",
+    { id:"announcement", label:"공고", note:"학술대회 공모 공고문",
+      title:"제20회 KEDI 데이터 연구 학술대회 공모 공고문",
+      sub:"공모 개요 · 지원 자격 · 제출 서류 · 심사 일정",
+      src:"docs/announcement.pdf", type:"pdf" },
+    { id:"plan", label:"계획", note:"제출·승인된 연구계획서", title:"연구계획서",
       sub:"중·고등학교 시기 참여의식이 성인기 정치적 참여 행동에 미치는 영향 (심사 통과본)",
       src:"docs/plan.pdf", type:"pdf" },
-    { id:"notice", label:"안내", title:"공모 결과 안내",
+    { id:"notice", label:"안내", note:"선정 결과 통보", title:"공모 결과 안내",
       sub:"제20회 KEDI 데이터 연구 학술대회 공모 결과",
       src:"docs/notice.pdf", type:"pdf" }
   ]},
@@ -188,7 +201,11 @@ function buildNav(secId, tabId){
   SECTIONS.forEach(sec => {
     const g = document.createElement("div");
     g.className = "group";
-    g.innerHTML = '<span class="glabel">' + sec.label + '</span>';
+    g.innerHTML = '<span class="glabel"><span class="dot"></span>' + sec.label +
+                  '<span class="cnt">' + sec.tabs.length + '</span></span>';
+    const box = document.createElement("div");
+    box.className = "items";
+    g.appendChild(box);
     sec.tabs.forEach(t => {
       const b = document.createElement("button");
       b.type = "button";
@@ -198,7 +215,7 @@ function buildNav(secId, tabId){
         location.hash = "#/" + sec.id + "/" + t.id;
         document.body.classList.remove("nav-open");
       };
-      g.appendChild(b);
+      box.appendChild(b);
     });
     nav.appendChild(g);
   });
@@ -217,7 +234,7 @@ function render(secId, tabId){
 function route(){
   const m = /^#\/([a-z]+)\/([\w-]+)$/.exec(location.hash || "");
   if (m && find(m[1])) render(m[1], m[2]);
-  else render("overview", "plan");
+  else render("overview", "announcement");
 }
 
 document.getElementById("toggle").onclick = () =>
