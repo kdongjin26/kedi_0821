@@ -1,0 +1,67 @@
+<title>분석8 — 네 구성개념의 다문항 잠재변수 모형</title>
+<style>
+:root{--bg:#f6f7f9;--surface:#fff;--ink:#15181c;--muted:#59616a;--line:#dde2e7;
+      --accent:#14614a;--soft:#e8f1ec;--warn:#8a5a00;--warnbg:#fdf6e6;--warnline:#e8d9b0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#131619;--surface:#1a1e22;--ink:#e5e9ed;--muted:#98a1aa;--line:#2b3138;
+  --accent:#5cc79c;--soft:#152a23;--warn:#e0b562;--warnbg:#241f14;--warnline:#4a3f22}}
+:root[data-theme="dark"]{--bg:#131619;--surface:#1a1e22;--ink:#e5e9ed;--muted:#98a1aa;
+  --line:#2b3138;--accent:#5cc79c;--soft:#152a23;--warn:#e0b562;--warnbg:#241f14;--warnline:#4a3f22}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);word-break:keep-all;line-height:1.75;
+  font-family:"IBM Plex Sans KR","Malgun Gothic",system-ui,-apple-system,sans-serif;}
+.wrap{max-width:760px;margin:0 auto;padding:44px 28px 72px}
+.badge{display:inline-block;padding:5px 13px;border-radius:999px;font-size:.76rem;
+  font-weight:700;letter-spacing:.02em;background:var(--warnbg);color:var(--warn);
+  border:1px solid var(--warnline);margin-bottom:18px}
+h1{margin:0 0 6px;font-size:1.55rem;font-weight:700;letter-spacing:-.02em;line-height:1.35}
+.sub{margin:0 0 30px;color:var(--muted);font-size:.95rem}
+h2{margin:34px 0 12px;font-size:1.06rem;font-weight:700;color:var(--accent);
+   padding-bottom:7px;border-bottom:1px solid var(--line)}
+p{margin:0 0 14px}
+ul{margin:0 0 14px;padding-left:20px}
+li{margin-bottom:7px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:11px;
+  padding:20px 22px;margin:18px 0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:.9rem}
+th,td{border:1px solid var(--line);padding:8px 11px;text-align:left}
+th{background:var(--soft);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.note{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:.86rem}
+code{background:var(--soft);padding:1px 6px;border-radius:4px;font-size:.88em}
+</style>
+<div class="wrap">
+  <span class="badge">미완성 · 2026-08-24 중단</span>
+  <h1>분석8 — 네 구성개념의 다문항 잠재변수 모형</h1>
+  <p class="sub">이 회차는 완성되지 않았다. 아래는 무엇을 하려 했고 왜 멈췄는지에 대한 기록이다.</p>
+
+  <h2>무엇을 하려 했나</h2>
+  <p>관용의식·참여의식·준법의식·봉사의식 네 가지를 각각 <strong>다문항 잠재변수</strong>로
+구성하고, 2차 잠재성장모형(curve-of-factors)으로 성인 초기 정치참여를 예측하려 하였다.
+기존 회차의 최대 한계였던 <strong>측정오차 통제</strong>를 해결하는 것이 목적이었다.</p>
+
+  <h2>왜 멈췄나</h2>
+  <p>문항 18개 × 6시점 = <strong>관측변수 108개</strong>에 순서형 종속변수 3개와 공변인 7개를
+붙인 WLSMV 모형이었다. 무조건 모형은 CFI .922~.981로 잘 수렴했으나, 종속변수를 붙이자
+적합도가 무너졌다.</p>
+<table><tr><th>단독 투입 (10차)</th><th>CFI</th><th>RMSEA</th></tr>
+<tr><td>관용의식</td><td class="num">.895</td><td class="num">.034</td></tr>
+<tr><td>참여의식</td><td class="num">.884</td><td class="num">.041</td></tr>
+<tr><td>준법의식</td><td class="num">.891</td><td class="num">.039</td></tr>
+<tr><td>봉사의식</td><td class="num">.884</td><td class="num">.038</td></tr></table>
+<p>네 구성 동시 투입은 메모리 3GB를 쓰다가 중단하였다.</p>
+
+  <h2>그럼에도 확인된 것</h2>
+  <ul>
+<li>차수마다 문항 번호와 하위영역 이름이 바뀐다는 점을 확인하고 <strong>문구 기준 대응표</strong>를 만들었다.</li>
+<li>네 구성의 판별타당도가 좋다(요인 간 상관 .370~.638).</li>
+<li>관용의식 11문항은 하나로 묶이지 않는다. 다문화 관계 6문항만 쓰는 편이 낫다(CFI .944 대 .872).</li>
+<li>네 구성의 변화 방향이 둘씩 갈린다. 관용·준법은 자라고 참여·봉사는 꺾인다.</li>
+</ul>
+
+  <div class="note">
+    자세한 기록·수치·재현 스크립트는 프로젝트 폴더의 <code>README.md</code>에 있다.
+    이 회차의 결과는 확정된 것이 아니므로 인용하지 않는다.
+  </div>
+</div>
